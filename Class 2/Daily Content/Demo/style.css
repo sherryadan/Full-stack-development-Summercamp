@@ -1,0 +1,21 @@
+* {
+    background-color: yellowgreen;
+}
+h1 {  
+    color: red;
+    font-size: 40px;
+}
+
+.color-is-red {
+    color :blue
+}
+
+#heading {
+    color: violet;
+}
+
+p,
+ul,
+h2 {
+    margin: 50px;
+}

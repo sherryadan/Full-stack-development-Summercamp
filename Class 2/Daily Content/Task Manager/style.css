@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* Global Styles */
+
+body {
+    font-family:'Courier New', Courier, monospace;
+}
+
+/* Tasks Item styles */
+
+.task-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 13px;
+    padding: 15px;
+    border: 1px solid #700882;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.task-item-hover{
+    background-color: #453747;
+}
+
+/* Task Text */
+.task-text{
+    flex: 1;
+    font-size: 15px;
+}
+
+/* Completed Task */
+.completed {
+    text-decoration: line-through;
+    color: red;
+}
+
+/* Delete Button */
+
+.delete-btn{
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 7px;
+    cursor: pointer;
+}
+.delete-btn-hover{
+    background-color: #dc2626;
+}
+
+.title{
+    color: red;
+    font-size: 40px;
+    font-weight: 100;
+    margin-bottom: 10px;
+
+}
+
