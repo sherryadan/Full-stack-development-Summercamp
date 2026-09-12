@@ -1,0 +1,98 @@
+.task-form-section {
+  padding: 32px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.task-form-section h2 {
+  margin-bottom: 4px;
+}
+
+.task-form-section > p {
+  margin-bottom: 20px;
+}
+
+.task-form {
+  display: flex;
+  gap: 12px;
+}
+
+.task-form input {
+  flex: 1;
+  font: inherit;
+  color: var(--text-h);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.task-form input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent-border);
+}
+
+.task-form button {
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.task-form button:hover {
+  border-color: var(--accent-border);
+}
+
+.task-form-error {
+  color: var(--accent);
+  margin-top: 12px;
+}
+
+.task-form-empty {
+  margin-top: 16px;
+  color: var(--text);
+}
+
+.task-form-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-form-list li {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--social-bg);
+  color: var(--text-h);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 1024px) {
+  .task-form-section {
+    padding: 24px 20px;
+  }
+
+  .task-form {
+    flex-direction: column;
+  }
+}
