@@ -10,7 +10,7 @@ function Nav() {
     <header className="navbar">
       <a className="navbar-brand" href="#center" onClick={closeMenu}>
         <span className="navbar-mark" aria-hidden="true">
-          TF
+          Minahil Fatima
         </span>
         Taskflow
       </a>
