@@ -6,84 +6,85 @@ const supabaseClient = supabase.createClient(
     SUPABASE_ANON_KEY
 );
 
-// Html elements 
+// HTML elements
 const noteForm = document.getElementById("noteForm");
 const noteInput = document.getElementById("noteInput");
 const noteList = document.getElementById("noteList");
 
+// Fetch notes  
+async function getNotes() {
+    const { data, error } = await supabaseClient
+        .from("notes")
+        .select("*")
+        .order("created_at", { ascending: false });
 
-// Fetch Notes
-async function getNotes(){
-    const {data, error} = await supabaseClient
-    .from("notes")
-    .select("*")
-    .order("created_at", {ascending: false});
-
-    if(error){
+    if (error) {
         console.error(error);
         return;
     }
-    displayNotes(data);
-};
 
-// Display Notes
-function displayNotes(notes){
+    displayNotes(data);
+}
+
+// Display notes
+function displayNotes(notes) {
     noteList.innerHTML = "";
-    notes.forEach(function(note){
+
+    notes.forEach(function (note) {
         const noteElement = document.createElement("div");
         noteElement.classList.add("note");
         noteElement.innerHTML = `
-        <span>${note.content}</span>
-        <button class="delete-btn" onclick="deleteNote(${note.id})">Delete</button>`;
+            <span>${note.content}</span>
+            <button class="delete-btn" onclick="deleteNote(${note.id})">Delete</button>
+        `;
 
         noteList.appendChild(noteElement);
-    })
+    });
 }
 
-// Add Notes 
-
+// Add notes
 noteForm.addEventListener("submit", async function (event) {
     event.preventDefault();
+
     const content = noteInput.value.trim();
 
-    if(!content){
+    if (!content) {
         return;
     }
-    const {error} = await supabaseClient
-    .from("notes")
-    .insert([
-        {
-            content : content
-        }
-    ]);
+
+    const { error } = await supabaseClient
+        .from("notes")
+        .insert([
+            {
+                content: content
+            }
+        ]);
+
     if (error) {
         console.error(error);
         alert("Something went wrong");
-
         return;
     }
-    noteInput.value = "";
 
+    noteInput.value = "";
     getNotes();
 });
 
-// delete notes 
+// Delete notes
+async function deleteNote(id) {
+    const { error } = await supabaseClient
+        .from("notes")
+        .delete()
+        .eq("id", id);
 
-async function deleteNote(id){
-    const {error} = await supabaseClient 
-    .from("notes")
-    .delete()
-    .eq("id", id);
-
-    if(error){
+    if (error) {
         console.error(error);
-        alert("Note cant be deleted ");
-
+        alert("Note can't be deleted");
         return;
     }
+
     getNotes();
 }
 
-// Load Notes When Page opens
-
+// Load notes when page opens
 getNotes();
