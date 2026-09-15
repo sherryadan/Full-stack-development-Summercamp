@@ -10,6 +10,7 @@
   position: sticky;
   top: 0;
   z-index: 10;
+  flex-wrap: wrap;
 }
 
 .navbar-brand {
@@ -39,9 +40,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-left: auto;
 }
 
-.navbar-links a {
+.navbar-links a,
+.navbar-links button {
   color: var(--text);
   text-decoration: none;
   font-size: 16px;
@@ -50,7 +53,106 @@
   transition: color 0.2s, background 0.2s, box-shadow 0.3s;
 }
 
-.navbar-links a:hover {
+.navbar-links button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.navbar-links button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.navbar-profile {
+  position: relative;
+}
+
+.navbar-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-border);
+  background: var(--accent-bg);
+  color: var(--accent);
+  font: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.navbar-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  z-index: 20;
+}
+
+.navbar-menu-name {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-h);
+  font-size: 15px;
+  word-break: break-word;
+}
+
+.navbar-menu-email {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.navbar-menu-logout {
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.navbar-menu-logout:hover:not(:disabled) {
+  border-color: var(--accent-border);
+}
+
+.navbar-menu-logout:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.navbar-menu-error {
+  margin: 0;
+  color: var(--accent);
+  font-size: 13px;
+}
+
+.navbar-error {
+  width: 100%;
+  margin: 0;
+  padding: 0 32px 12px;
+  color: var(--accent);
+  font-size: 14px;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active,
+.navbar-links button:hover:not(:disabled) {
   color: var(--text-h);
   background: var(--social-bg);
 }
@@ -61,7 +163,8 @@
   border: 2px solid transparent;
 }
 
-.navbar-cta:hover {
+.navbar-cta:hover,
+.navbar-cta.active {
   border-color: var(--accent-border);
   box-shadow: var(--shadow);
 }
